@@ -1,14 +1,18 @@
 #_*_ coding:utf-8 _*_
 # Coded: KuuWangE
-import queue
-import threading
 
 import pyaudio
 import wave
 import audioop
 import math
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+
 print (plt.get_backend())
+plt.gcf().canvas.set_window_title('403 일해라 벌레들아아아아아')
+
+
 
 
 class Detector():
@@ -22,8 +26,8 @@ class Detector():
             self.X.append(i)
             if(i < 40):
                 self.Y.append(40)
-            elif(i > 120):
-                self.Y.append(120)
+            elif(i > 100):
+                self.Y.append(100)
             else:
                 self.Y.append(i)
         self.G_i = 0
@@ -31,6 +35,8 @@ class Detector():
         plt.ion()
         plt.show()
         self.graph = plt.plot(self.X, self.Y)[0]
+        plt.xlabel('Time sequence')
+        plt.ylabel('DeciBel')
 
     def Prepare_Audio(self):
         self.read_index = 0
